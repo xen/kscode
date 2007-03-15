@@ -1,0 +1,7 @@
+$Id$
+$URL: https://corp.keysolutions.ru/svn/products/reference/trunk/reference/TODO.txt $
+
+План работ по reference:
+
+    1. Обновить тексты заданий  
+    
