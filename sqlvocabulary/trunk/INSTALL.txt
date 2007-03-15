@@ -1,0 +1,55 @@
+$Id$
+
+Автор: Антон Опря
+Установка и настройка продукта sqlvocabulary:
+
+    Используемое ПО:
+    
+        1. postgresql
+        
+        2. psycopgda
+        
+    Список плагинов:
+    
+        набор плагинов sport/sqlvocabulary
+        
+    Предварительная подготовка:
+        
+        Для успешной установки sqlvocabulary должны
+        быть предварительно установлены следующие продукты:
+          
+            1. postgresql
+            
+            2. psycopgda
+             
+        До начала инсталляции в PostgreSQL должна быть база sport,
+        должен существовать коннектор к ней с именем psycopgda,
+        зарегистрирванный под именем db.
+
+    Установка:
+    
+        1. Папку с продуктом скопировать в $INSTANCE/lib/python;
+        
+        2. Из папки etc продукта скопировать файл sqlvocabulary-configure.zcml
+           в $INSTANCE/etc/package-includes;
+           
+        3. Перезапустить zope;   
+           
+      Последущие пункты являются параметризированной установкой набора плагинов
+      sport/sqlvocabulary       
+        
+        4. Создать в ZMI Sql Vocabulary под именем <sqlvocabularyname>,
+           выбрав в поле Название соединения адаптер db
+
+        5. Зарегестрировать Sql Vocabulary как утилиту, выбрав из списка
+           интерфейс zope.schema.interfaces.IVocabularyFactory под именем
+           <sqlvocabularyname>
+
+        6. В зарегестрированном в п.5 Sql Vocabulary перейти на закладку
+           Generate, где заполнить предложеные поля значениями Table = <table>
+           таблица в БД, из котороой выбираем данные для словаря,
+           Identifier = <vocid> - поле таблицы <table> которое является
+           идентификатором для terms словаря, Name = <vocname> поле таблицы
+           <table> которое является названием для terms словаря.
+        
+        7. Нажать кнопку Generate

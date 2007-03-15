@@ -1,0 +1,58 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Anton Oprya
+    $Id$ 
+  -->
+  
+  
+  <class class=".sqlvocabulary.SqlVocabulary">
+    
+    <factory
+        id="sqlvocabulary.SqlVocabulary"
+        description="SqlVocabulary" 
+        />
+        
+    <require 
+        permission="zope.ManageContent"
+        interface=".interfaces.ISqlVocabulary"
+        set_schema=".interfaces.ISqlVocabulary"
+        />
+
+    <require 
+        permission="zope.ManageContent"
+        interface=".interfaces.ISqlScriptGenerate"
+        set_schema=".interfaces.ISqlScriptGenerate"
+        />
+
+    <require 
+        permission="zope.ManageContent"
+        interface="zope.app.sqlscript.interfaces.ISQLScript"
+        set_schema="zope.app.sqlscript.interfaces.ISQLScript"
+        />      
+  </class>
+  
+    <!--  <adapter
+       for=".interfaces.ISqlVocabulary"
+       provides="zope.app.filerepresentation.interfaces.IFileFactory"
+       factory="sqlvocabulary.sqlvocabulary.SqlVocabularyFactory"
+       permission="zope.ManageContent" /> -->
+       
+   <utility
+      provides="zope.schema.interfaces.IVocabularyFactory"
+      component=".sqlvocabulary.SqlVocabulary"
+      name="RegionsVocabulary"
+      />
+    
+  <include package=".browser" />
+
+</configure>

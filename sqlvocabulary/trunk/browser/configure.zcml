@@ -1,0 +1,63 @@
+<configure
+    xmlns="http://namespaces.zope.org/browser">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Anton Oprya
+    $Id$ 
+  -->
+  
+  
+  <addform
+    label="Add SqlVocabulary"
+    name="AddSqlVocabulary.html"
+    schema="zope.app.sqlscript.interfaces.ISQLScript"
+    content_factory="..sqlvocabulary.SqlVocabulary"
+    permission="zope.ManageContent"
+    />
+    
+  <addMenuItem
+    class="..sqlvocabulary.SqlVocabulary"
+    title="SQL Vocabulary"
+    description="SQL Vocabulary"
+    permission="zope.ManageContent"
+    view="AddSqlVocabulary.html" 
+    />
+
+  <form
+    schema="..interfaces.ISqlScriptGenerate"
+    for="..interfaces.ISqlVocabulary"
+    label="Generate"
+    name="sqlscriptgenerate.html"
+    class=".sqlscriptgenerate.SqlScriptGenerate"
+    template="sqlscriptgenerate.pt"
+    permission="zope.ManageContent"
+    menu="zmi_views" title="Generate" 
+    /> 
+
+  <pages
+    for="..interfaces.ISqlVocabulary"
+    permission="zope.View"
+    class=".sqlscriptgenerate.SQLScriptTest" >
+
+    <page
+      name="test.html"
+      template="test.pt" 
+      menu="zmi_views"
+      title="[test-page-title] Test"
+      />
+
+    <page
+      name="testResults.html"
+      template="testresults.pt"
+      />
+  </pages>
+
+</configure>

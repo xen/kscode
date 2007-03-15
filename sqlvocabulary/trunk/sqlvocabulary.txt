@@ -1,0 +1,93 @@
+Описание sqlvocabulary:
+
+  Автор -- Антон Опря
+  
+  Версия -- $Id$
+
+  URL -- $URL: https://corp.keysolutions.ru/svn/products/SqlVocabulary/trunk/sqlvocabulary/sqlvocabulary.txt $
+  
+  Предложено -- Андрей Орлов
+
+  Утврждаю -- Andrey Orlov, 2006 02 01  16:00
+
+  Аннотация:
+  
+    Словарь, черпающий свое содержимое из sql-базы
+
+  Идея реализации:
+  
+    Наследуем от zope.app.sqlscript.SQLScript. В SQLScript вписывается селект,
+    потребный чтобы получить данные словаря. Утилита провайдит интерфейс
+    zope.schema.interfaces.IVocabulary, через который раздает результат
+    sql-запроса.
+    
+    Поскольку все SQL-запросы для работы со словарем имеют довольно-таки
+    типичный вид, то сделать генерацию такого запроса (см. виды)
+    
+    У IVocabulary следующие методы:
+
+      __iter__() - Return an iterator which provides the terms from the
+                   vocabulary.
+      
+      getTerm(value) - Return the ITerm object for the term 'value'.
+                       If 'value' is not a valid term, this method raises
+                       LookupError.
+      
+      __len__() - Return the number of valid terms, or sys.maxint.
+      
+      __contains__(value) - Return whether the value is available in this
+                            source
+      
+      Для этих методов собственно нужен список terms, который представляет собой
+      список объектов zope.schema.vocabulary.SimpleTerm, для инициализации
+      которых нужны параметры value, token, которые в свою очередь нужно брать
+      из sql таблицы с помощью сгенереннного запроса (см. виды). Для этого
+      добавим метод getTermsFromSQL, который используя сгенеренный запрос
+      получает наборы (value, token), и заполняет атрибуты класса,
+      
+        _terms - список объектов SimpleTerm
+      
+        by_value и by_token - словари у которых ключи соотвественно value и
+                              token, значения - объекты SimpleTerm, входящие
+                              в _terms
+       
+       Вышеперечисленные методы для IVocabulary соответственно в первую очередь
+       вызывают метод getTermsFromSQL
+       
+       Для того чтобы можно было грузить тело sql метода по фтп, создаем
+       специальный контейнер SqlVocbularyFactory, кототорый наследуется от
+       sqlscriptftprepresentation.filerepresentation.SQLScriptFactory.
+       В нем переопределяем метод createScript, который вместо SQLScript
+       будет возвращать SqlVocabulary.
+       
+       В zcml ргестрируем адаптер, что-то типа:
+       
+       <adapter
+         for="sqlvocabulary.interfaces.ISqlVocabulary"
+		 provides="zope.app.filerepresentation.interfaces.IFileFactory"
+     	 factory="sqlvocabulary.sqlvocbulary.SqlVocbularyFactory"
+		 permission="zope.ManageContent" />
+	  
+	  вроде так должно сработать
+                            
+  Состав продукта:
+  
+    browser - виды для SqlVocabulary
+    
+  Виды:
+  
+    sqlscriptgenerate - специальный вид, с полями:
+    
+        table -- таблица,
+        
+        id -- идентификатор,
+        
+        call -- название.
+        
+    И кнопкой Generate. По кнопке Generate генерирутется содержимое SQL-script
+    и вкладывается в него через интерфейс SQL script
+    
+      Шаблон sqlmetod-запроса:
+    
+        select %(call)s, %(id)s from %(table)s    
+    

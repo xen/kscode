@@ -1,0 +1,31 @@
+<!--
+  Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+  Все права защищены, 2006-2007
+  
+  Developed by Key Solutions (http://keysolutions.ru/)
+  All right reserved, 2006-2007
+                                    
+  Author: Anton Oprya
+  $Id: sqlscriptgenerate.pt 4012 2007-02-27 15:36:57Z anton_oprya $
+
+  Страница редактирования списка связей
+-->
+<html metal:use-macro="context/@@standard_macros/view">
+    <div metal:fill-slot="body" i18n:domain="videoengine">
+        <form>
+        <div class="row">
+            <strong>SQL Script: </strong><span tal:content="structure context/source"/>
+        </div>
+            <div metal:use-macro="views/form_macros/formbody">
+            </div>
+            <div class="row">
+                <div class="controls">
+                    <input type="submit" value="Refresh" 
+                        i18n:attributes="value refresh-button" />
+                    <input type="submit" name="UPDATE_SUBMIT" value="Change" 
+                        i18n:attributes="value submit-button"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</html>
