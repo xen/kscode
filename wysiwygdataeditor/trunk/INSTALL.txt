@@ -1,0 +1,55 @@
+$Id$
+
+Автор: Антон Опря
+
+Установка и настройка продукта wysiwygdataeditor:
+
+    Используемое ПО:
+        
+        1. zc.resourcelibrary
+        
+        2. z3c.widget
+        
+    Список плагинов:
+    
+        нет
+        
+    Предварительная подготовка:
+    
+        Для успершной установки wysiwygdataeditor должны
+        быть предварительно установлены следующие продукты:
+            
+            1. zc.resourcelibrary
+            
+            2. z3c.widget
+            
+            3. браузер с поддержкой javascript (javascript должен быть
+               разрешен в настройках браузера)
+             
+    Установка:
+    
+        1. Скачать и инсталировать пакет zc.resourcelibrary
+           svn export svn://svn.zope.org/repos/main/zc.resourcelibrary/tags/0.6
+        
+        2. Скачать и инсталировать пакет z3c.widget
+           svn export svn://svn.zope.org/repos/main/z3c.widget/trunk -r 71540
+           (релиза данного продукта еще не существует)   
+        
+        3. Применить патч z3c.patch для продукта z3c.widget из папки patches:
+        
+            Перейти в директорию с продуктом::
+        
+                % cd z3c
+                
+            Применить патч::                
+            
+                % patch -p1 <z3c.patch
+
+                Вместо z3c.patch нужно указать полный путь к патчу.
+        
+        4. Папку с продуктом скопировать в $INSTANCE/lib/python
+        
+        5. Из папки etc продукта скопировать файл
+           wysiwygdataeditor-configure.zcml в $INSTANCE/etc/package-includes
+        
+        6. Перезапустить zope

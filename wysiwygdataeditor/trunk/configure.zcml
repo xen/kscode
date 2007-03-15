@@ -1,0 +1,33 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Anton Oprya
+    $Id$ 
+  -->
+    
+  <role
+      id="wysiwyg.Editor"
+      title="Wysiwyg Editor"
+      description="The Wysiwyg Editor can edit Body of content types by WysiwygDataEditor." />
+ 
+  <permission
+      id="wysiwyg.Edit"
+      title="Wysiwyg Edit"
+      description="Wysiwyg Edit."
+      />
+  <grant
+      permission="wysiwyg.Edit"
+      role="wysiwyg.Editor" />
+    
+  <include package=".browser" />
+
+</configure>
