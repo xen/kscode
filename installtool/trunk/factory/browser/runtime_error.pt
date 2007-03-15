@@ -1,0 +1,27 @@
+<!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+<!--
+  Author: Sergey Shilov
+  $Id: runtime_error.pt 4720 2007-03-14 21:23:39Z anatoly $
+-->
+<html metal:use-macro="views/standard_macros/view">
+    <body metal:fill-slot="body">
+        <h3>Ошибка при выполнении скрипта!</h3>
+        <div class="row" tal:condition="context/res">
+            <h4>Статусы завершения скриптов до:</h4>
+            <tal:block tal:repeat="item context/res">
+                Скрипт <strong tal:content="python:item[0]">ScriptName</strong> - <strong tal:content="python:item[1]">ScriptName</strong><br/>
+            </tal:block>
+        </div>
+        <h4>Скрипт, вызвавший ошибку:</h4>
+        <div class="row">
+            Скрипт <strong tal:content="context/script">ScriptName</strong> - ОШИБКА!<br/>
+            <strong>Описание ошибки:</strong>
+            <span tal:replace="python:str(context.msg).decode('utf-8', 'replace')">Error message</span>
+        </div>
+    </body>
+</html>

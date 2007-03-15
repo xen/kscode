@@ -1,0 +1,34 @@
+<configure 
+      xmlns="http://namespaces.zope.org/meta"> 
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Sergey Shilov
+    $Id$ 
+  -->
+
+    <directives namespace="http://namespaces.zope.org/browser"> 
+    
+        <complexDirective
+            name="factoryform"
+            schema=".metadirectives.IFactoryFormDirective"
+            handler=".metaconfigure.FactoryFormDirective"
+            >
+        
+          <subdirective
+              name="property"
+              schema="..zcmlinstall.metadirectives.IPropertySubdirective"
+              />
+                                
+        </complexDirective>
+
+    </directives> 
+   
+</configure>

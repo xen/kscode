@@ -1,0 +1,23 @@
+<!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+<!--
+  Author: Sergey Shilov
+  $Id: deps_error.pt 3354 2007-02-14 16:19:54Z morthan $
+-->
+
+<html metal:use-macro="views/standard_macros/view">
+    <body metal:fill-slot="body">
+        <h3>Ошибка</h3>
+        <div class="row">Не могу разрешить зависимости в одном из следующих скриптов:</div>
+        <div class="row">
+            <tal:block tal:repeat="item view/getScripts">
+                <span tal:replace="python:item[0]">Script</span> зависит от
+                <span tal:replace="python:str(item[1])">Depends</span><br/>
+            </tal:block>
+        </div>
+    </body>
+</html>
