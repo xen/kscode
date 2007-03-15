@@ -1,0 +1,30 @@
+Описание mountpoint :
+
+  Автор -- Andrey Orlov
+  
+  Версия -- $Id$
+
+  URL -- $URL: https://corp.keysolutions.ru/svn/products/simplesqlui/trunk/simplesqlui/mountpoint/mountpoint.txt $
+
+  Утверждаю -- Andrey Orlov, 2007 02 14 18 35
+
+  Аннотация: 
+  
+    Объект класса mountpoint представляет собой точку монтирования иерархии
+    SQL-объектов: это первый контейнер, из которого можно получить список
+    объектов, активизированных из Sql-базы.
+
+
+  Идея реализации:
+
+    Перекрываются методы интерфейса IContainer таким образом, чтобы обращаться
+    за объектами к ds и factory, указанные в специальных атрибутах объекта.
+    
+  Интерфейсы:
+  
+    IContainer -- список объектов, производных от record;
+    
+    IMountpointProp -- свойства mountpoint: ds, factory.
+    
+    
+    

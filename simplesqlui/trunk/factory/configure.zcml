@@ -1,0 +1,53 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Arvid
+    $Id$ 
+  -->
+  
+    <interface
+        interface=".interfaces.ISqlFactoryProp"
+        type="zope.app.content.interfaces.IContentType"
+    />
+
+    <utility
+        component = ".vocabulary.SqlFactoryVocabulary"
+        name="SQL Factory Vocabulary"
+    />
+    
+    <class class=".factory.Factory">
+        <factory
+            id="factory.Factory"
+            description="SqlFactory"
+        />
+        
+        <require
+            permission="zope.Public"
+            interface=".interfaces.ISqlFactoryProp"
+        />
+        <require
+            permission="zope.ManageContent"
+            set_schema=".interfaces.ISqlFactoryProp"        
+        />
+        
+        <require
+            permission="zope.Public"
+            interface=".interfaces.ISqlFactory"
+        />
+        <require
+            permission="zope.ManageContent"
+            set_schema=".interfaces.ISqlFactory"        
+        />
+    </class>
+  
+  <include package=".browser" />
+</configure>

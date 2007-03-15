@@ -1,0 +1,50 @@
+<configure
+    xmlns="http://namespaces.zope.org/browser">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Arvid
+    $Id$ 
+  -->
+
+    <addform
+        label="Add DS"
+        name="AddDS.html"
+        schema="..interfaces.IDS"
+        content_factory="..ds.DS"
+        permission="zope.ManageContent"
+    />
+
+    <addMenuItem
+        class="..ds.DS"
+        title="DS"
+        description="Data Source"
+        permission="zope.ManageContent"
+        view="AddDS.html" 
+    />
+
+    <editform
+        schema="..interfaces.IDS"
+        for="..interfaces.IDS"
+        label="Edit"
+        name="edit.html"
+        permission="zope.ManageContent"
+        menu="zmi_views" 
+        title="Edit" 
+    />
+    
+    <containerViews
+        for="..interfaces.IDS"
+        index="zope.View"
+        contents="zope.View"
+        add="zope.ManageContent"
+    />
+
+</configure>

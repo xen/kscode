@@ -1,0 +1,23 @@
+$Id$
+
+Установка и настройка продукта simplesqlui:
+
+    Предварительная подготовка:
+    
+        Для успершной установки simplesqlui должны
+        быть предварительно установлены следующие продукты:
+        
+            interfaceswitcher
+        
+            Должен существовать коннектор к базе данных,
+            зарегистрированный под именем db.
+           
+    Установка:
+    
+        1.  Скопировать каталог simplesqlui в ZopeInstance/lib/python:
+        
+        2.  Cкопируйте нижеуказанные файлы в ZopeInstance/etc/package-includes:
+        
+                simplesqlui/etc/simplesqlui-configure.zcml
+        
+Конец документа

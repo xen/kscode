@@ -1,0 +1,1 @@
+<include package="simplesqlui.sqlcontainerview" file="meta.zcml"/>

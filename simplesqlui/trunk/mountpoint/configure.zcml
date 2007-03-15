@@ -1,0 +1,57 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Arvid
+    $Id$ 
+  -->
+  
+    <interface
+        interface=".interfaces.IMountpointProp"
+        type="zope.app.content.interfaces.IContentType"
+    />
+    
+    <interface
+        interface=".interfaces.IMountPointSwitcher"        
+    />
+
+    <class class=".mountpoint.MountPoint">
+    
+        <implements interface=".interfaces.IMountPointSwitcher" />
+        
+        <factory
+            id="mountpoint.MountPoint"
+            description="MountPoint"
+        />
+        
+        <require
+            permission="zope.Public"
+            interface=".interfaces.IMountpoint"
+        />
+        <require
+            permission="zope.ManageContent"
+            set_schema=".interfaces.IMountpoint"        
+        />
+        
+        <require
+            permission="zope.Public"
+            interface="..sqlcontainer.interfaces.ISqlContainer"
+        />
+
+        <require
+            permission="zope.ManageContent"
+            set_schema="..sqlcontainer.interfaces.ISqlContainer"        
+        />
+    
+    </class>
+  
+  <include package=".browser" />
+</configure>

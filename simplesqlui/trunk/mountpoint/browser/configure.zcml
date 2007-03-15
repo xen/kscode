@@ -1,0 +1,43 @@
+<configure
+    xmlns="http://namespaces.zope.org/browser">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Arvid
+    $Id$ 
+  -->
+
+    <addform
+        label="Add Mount Point"
+        name="AddMountPoint.html"
+        schema="..interfaces.IMountpointProp"
+        keyword_arguments="datasource factory"
+        content_factory="..mountpoint.MountPoint"
+        permission="zope.ManageContent"
+    />
+
+    <addMenuItem
+        class="..mountpoint.MountPoint"
+        title="Mount Point"
+        description="Mount Point"
+        permission="zope.ManageContent"
+        view="AddMountPoint.html" 
+    />
+
+    <editform
+        schema="..interfaces.IMountpointProp"
+        for="..interfaces.IMountpointProp"
+        label="Edit"
+        name="edit.html"
+        permission="zope.ManageContent"
+        menu="zmi_views" 
+        title="Edit" 
+    />
+</configure>

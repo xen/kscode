@@ -1,0 +1,43 @@
+<configure
+    xmlns="http://namespaces.zope.org/browser">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Arvid
+    $Id$ 
+  -->
+
+    <addform
+        label="Add SQL Factory"
+        name="AddSqlFactory.html"
+        schema="..interfaces.ISqlFactoryProp"
+        content_factory="..factory.Factory"
+        permission="zope.ManageContent"
+    />
+
+    <addMenuItem
+        class="..factory.Factory"
+        title="SQL Factory"
+        description="SQL Factory"
+        permission="zope.ManageContent"
+        view="AddSqlFactory.html" 
+    />
+
+    <editform
+        schema="..interfaces.ISqlFactoryProp"
+        for="..interfaces.ISqlFactoryProp"
+        label="Edit"
+        name="edit.html"
+        permission="zope.ManageContent"
+        menu="zmi_views" 
+        title="Edit" 
+    />
+    
+</configure>

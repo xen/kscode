@@ -1,0 +1,50 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Arvid
+    $Id$ 
+  -->
+  
+    <interface
+        interface=".interfaces.IDS"
+        type="zope.app.content.interfaces.IContentType"
+    />
+
+    <utility
+        component = ".vocabulary.DSVocabulary"
+        name="DS Vocabulary"
+    />
+    
+    <class class=".ds.DS">
+        <factory
+            id="ds.DS"
+            description="DS"
+        />
+        <require
+            permission="zope.Public"
+            interface=".interfaces.IDS"
+        />
+        <require
+            permission="zope.ManageContent"
+            set_schema=".interfaces.IDS"        
+        />
+    </class>
+  
+    <adapter
+        for=".interfaces.IDS"
+        provides="zope.app.filerepresentation.interfaces.IFileFactory"
+        factory="sqlscriptftprepresentation.filerepresentation.SQLScriptFactory"
+        permission="zope.ManageContent" 
+    />
+
+  <include package=".browser" />
+</configure>

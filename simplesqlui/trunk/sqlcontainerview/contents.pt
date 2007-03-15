@@ -1,0 +1,198 @@
+<!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Arvid
+    $Id: contents.pt 4717 2007-03-14 17:50:31Z arvid $ 
+  -->
+
+  <!--
+    За основу взят файл из исходников zope-3.3:
+    zope/app/container/browser/contents.pt
+  -->
+
+<html metal:use-macro="context/@@standard_macros/view"
+    i18n:domain="zope">
+<body>
+<div metal:fill-slot="body">
+  <div metal:define-macro="contents">
+
+    <form name="SqlContentsSearch" method="post" action=""
+        tal:attributes="action string:${context/@@absolute_url}/"        
+    >
+
+        <tal:block tal:condition="view/searchable"                        
+                        tal:omit-tag="">
+            <table class="listing" summary="Content search">
+                
+                <thead>
+                  <tr>
+                    <th tal:repeat="field view/search"
+                            tal:content="python: field[1].label"
+                            i18n:translate="">
+                        fieldName
+                    </th>            
+                  </tr>
+                </thead>
+                
+                <tbody>
+                    <td tal:repeat="field view/search">
+                        <tal:block tal:replace="structure python: field[1]()" />                        
+                    </td>
+                </tbody>
+                
+            </table>
+            
+            <input type="submit" name="show:method" value="Filter"
+               i18n:attributes="value container-filter-button"               
+            />
+        
+        </tal:block>
+    </form>
+    
+    <form name="SqlContents" method="post" action=""
+        tal:attributes="action string:${context/@@absolute_url}/"        
+    >
+    
+        <input type="hidden" name="type_name" value=""
+            tal:attributes="value request/type_name"
+            tal:condition="request/type_name | nothing"
+        />
+        <input type="hidden" name="retitle_id" value=""
+            tal:attributes="value request/retitle_id"
+            tal:condition="request/retitle_id | nothing"
+        />
+
+        <div class="page_error"
+            tal:condition="view/error | nothing"
+            tal:content="view/error"
+            i18n:translate="">
+                Error message
+        </div>
+        
+        <table id="sortable" class="listing" summary="Content listing"
+            i18n:attributes="summary">
+
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th>Link</th>
+            <th tal:repeat="fieldName view/fieldNames"
+                    tal:content="fieldName"
+                    i18n:translate="">
+                fieldName
+            </th>            
+          </tr>
+        </thead>
+
+        <tbody>
+
+        <metal:block tal:define="supportsRename view/supportsRename"
+                     tal:repeat="item view/__iter__">
+            <!-- 
+                    Здесь было еще такое объявление 
+                    id_quoted item/id/url:quote
+                    Разобраться с этим
+            -->
+          <tr tal:define="itemId python: item[0];
+                                oddrow python: item[1]; 
+                                url string:${oddrow/@@absolute_url}/;
+                                widgetFields python: view.setUpWidgets(oddrow)"                
+                tal:attributes="class python:oddrow and 'even' or 'odd'" >
+            <td>
+                <!-- Надо выяснить за list -->
+              <input type="checkbox" class="noborder" name="ids:list" 
+                    id="" value=""
+                     tal:attributes="value itemId;
+                                     id itemId;
+                                     checked request/ids_checked | nothing;"/>
+            </td>
+            
+            <td>
+                <a href=""
+                    tal:attributes="href string:${url}/@@SelectedManagementView.html"
+                    tal:content="structure oddrow/icon | default">
+                    <span tal:content="itemId"></span>
+                </a>            
+            </td>
+            
+            <td tal:repeat="fieldName view/fieldNames">
+                <tal:block tal:condition="python: fieldName in widgetFields">
+                    <tal:block tal:replace="structure python: view.getWidget(oddrow, fieldName)()" />              
+                </tal:block>
+                <tal:block tal:condition="not: python: fieldName in widgetFields">
+                    <span>N/A</span>
+                </tal:block>
+            </td>
+            <!--
+            <td><span tal:content="item/size/sizeForDisplay|nothing"
+                    i18n:translate="">
+                      &nbsp;</span></td>
+            <td><span tal:define="created item/created|default"
+                      tal:content="created"
+                      i18n:translate="">&nbsp;</span></td>
+            <td><span tal:define="modified item/modified|default"
+                      tal:content="modified"
+                      i18n:translate="">&nbsp;</span>
+            </td>
+            -->
+          </tr>
+        </metal:block>
+
+        </tbody>
+      </table>
+
+      <tal:block tal:condition="view/normalButtons">
+
+        <input type="submit" name="rename:method" value="Rename"
+               i18n:attributes="value container-rename-button"
+               tal:condition="view/supportsRename"
+        />
+        <input type="submit" name="cut:method" value="Cut"
+               i18n:attributes="value container-cut-button"
+               tal:condition="view/supportsCut"
+        />
+        <input type="submit" name="copy:method" value="Copy"
+               i18n:attributes="value container-copy-button"
+               tal:condition="view/supportsCopy"
+        />
+        <input type="submit" name="paste:method" value="Paste"
+               tal:condition="view/hasClipboardContents"
+               i18n:attributes="value container-paste-button"
+        />
+        <input type="submit" name="delete:method" value="Delete"
+               i18n:attributes="value container-delete-button"
+               tal:condition="view/supportsDelete"
+               i18n:domain="zope"
+        />
+        <!--
+        <input type="submit" name="show:method" value="Change"
+               i18n:attributes="value container-change-button"
+               tal:condition="view/supportsChange"
+               i18n:domain="zope"
+        />
+        -->
+
+      </tal:block>
+
+      <div tal:condition="view/specialButtons">
+        <input type="submit" value="Apply"
+               i18n:attributes="value container-apply-button"
+               />
+        <input type="submit" name="container_cancel_button" value="Cancel"
+               i18n:attributes="value container-cancel-button"
+               />
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+</body>
+</html>
