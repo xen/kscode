@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Andrey Orlov
+    $Id$ 
+  -->
+
+  <utility
+      provides="zope.schema.interfaces.IVocabularyFactory"
+      component=".interfaceswitchervocabulary.interfaceSwitcherVocabulary"
+      name="InterfaceSwitcherVocabulary"
+      />
+
+</configure>

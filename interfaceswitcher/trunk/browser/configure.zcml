@@ -1,0 +1,28 @@
+<configure
+    xmlns="http://namespaces.zope.org/browser">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Anatoly Zaretsky
+    $Id$ 
+  -->
+
+  <form
+      name="interfaceswitcher.html"
+      permission="zope.ManageContent"
+      for="..interfaces.IInterfaceSwitcherAble"
+      schema="..interfaces.ISwitchableSchema"
+      class=".viewadapter.ViewAdapter"
+      menu="zmi_views"
+      title="Switch"
+      label="Select marker"
+      />
+
+</configure>

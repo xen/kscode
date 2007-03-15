@@ -1,0 +1,69 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    >
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Anatoly Zaretsky
+    $Id$
+  -->
+
+  <interface interface=".interfaces.FolderOne" />
+  <interface interface=".interfaces.FolderTwo" />
+
+  <interface interface=".interfaces.CatalogOne" />
+  <interface interface=".interfaces.CatalogTwo" />
+
+  <class class="zope.app.folder.folder.Folder">
+    <implements interface=".interfaces.FolderGroup"/>
+  </class>
+
+  <class class="zope.app.catalog.catalog.Catalog">
+    <implements interface=".interfaces.CatalogGroup"/>
+  </class>
+
+  <browser:page
+      name="test.html"
+      permission="zope.ManageContent"
+      for=".interfaces.FolderOne"
+      menu="zmi_views"
+      title="Test Switcher"
+      template="testone.pt"
+      />
+
+  <browser:page
+      name="test.html"
+      permission="zope.ManageContent"
+      for=".interfaces.FolderTwo"
+      menu="zmi_views"
+      title="Test Switcher"
+      template="testtwo.pt"
+      />
+
+  <browser:page
+      name="test.html"
+      permission="zope.ManageContent"
+      for=".interfaces.CatalogOne"
+      menu="zmi_views"
+      title="Test Switcher"
+      template="testone.pt"
+      />
+
+  <browser:page
+      name="test.html"
+      permission="zope.ManageContent"
+      for=".interfaces.CatalogTwo"
+      menu="zmi_views"
+      title="Test Switcher"
+      template="testtwo.pt"
+      />
+
+</configure>

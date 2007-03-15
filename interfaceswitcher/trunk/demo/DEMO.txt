@@ -1,0 +1,39 @@
+$Id$
+
+Демонстрационный план для плагина demo продукта interfaceswitcher:
+
+    Используемое ПО:
+
+        interfaceswitcher
+
+    Демонстрационный план:
+
+        1. Перейти в объект Catalog в корне сайта - должна появится
+           закладка Switch.
+
+        2. Перейти на закладку Switch. Появится форма Select marker
+           с выпадающим списком Switchable marker с элементами
+
+               interfaceswitcher.demo.interfaces.CatalogOne
+               interfaceswitcher.demo.interfaces.CatalogTwo
+
+        3. Выбрать из списка interfaceswitcher.demo.interfaces.CatalogOne и
+           нажать Change - должна появится закладка Test Switcher.
+
+        4. Перейти на закладку Test Switcher - появится вид со словом one.
+
+        5. Перейти в объект Folder в корне сайта - должна появится
+           закладка Switch.
+
+        6. Перейти на закладку Switch. Появится форма Select marker
+           с выпадающим списком Switchable marker с элементами
+
+               interfaceswitcher.demo.interfaces.FolderOne
+               interfaceswitcher.demo.interfaces.FolderTwo
+
+        7. Выбрать из списка interfaceswitcher.demo.interfaces.FolderTwo и
+           нажать Change - должна новая закладка Test Switcher.
+
+        8. Перейти на закладку Test Switcher - появится вид со словом two.
+
+Конец документа
