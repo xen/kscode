@@ -1,0 +1,44 @@
+$Id$
+
+Установка и настройка продукта demo:
+
+    Используемое ПО:
+    
+        contentclass2resource
+        
+    Список плагинов:
+    
+        нет
+        
+    Предварительная подготовка:
+    
+        Для успешной установки demo должны
+        быть предварительно установлены следующие продукты:
+
+            contentclass2resource
+
+    Установка:
+    
+        1. Скопируйте файл demo/etc/contentclass2resource-demo-configure.zcml в
+           ZOPEINSTANCE/etc/package-includes
+
+        2. Перезапустите Zope
+
+        3. Войдите в созданный экземпляр "Resource Container", имеющий имя
+           cont_res.
+        
+        4. Добавьте в него экземпляр "Resource content" со следующими
+           параметрами:
+               
+            Content name: contentclass2resource.demo.mycontentclass.MyContentClass
+            Class name: Тестовый класс
+            Class icon: none.png
+        
+        5. Выйдите из cont_res в корень ZMI, путём щелчка по ссылке "основная",
+           находящейся в верхней правой части страницы.
+
+        6. Добавьте экземпляр "Test content" со следующими параметрами:
+
+            Название объекта: test_content
+        
+Конец документа

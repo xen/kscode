@@ -1,0 +1,76 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Sergey Shilov
+    $Id$ 
+  -->
+
+    <interface
+        interface=".interfaces.IContentClassResource"
+        type="zope.app.content.interfaces.IContentType"
+        />
+      
+    <class class=".resourcecontent.ResourceContent">
+        <factory
+            id="resourcecontent.ResourceContent"
+            description="Resource Content" 
+            />
+
+        <require 
+            permission="zope.ManageContent"
+            set_schema=".interfaces.IContentClassResourceSchema"
+            interface=".interfaces.IContentClassResourceSchema"
+            />
+  
+    </class> 
+  
+    <interface interface=".interfaces.IResourceContainer"
+        type="zope.app.content.interfaces.IContentType"
+        />
+      
+    <class class=".resourcecontainer.ResourceContainer">
+        <implements
+            interface="zope.app.container.interfaces.IContainerNamesContainer"
+            />
+        <factory
+            id="resourcecontainer.ResourceContainer"
+            description="Resource Container" 
+            />
+        <require 
+            permission="zope.ManageContent"
+            interface=".interfaces.IResourceContainer"
+            />
+        <require 
+            permission="zope.ManageContent"
+            set_schema=".interfaces.IResourceContainer"
+            />
+    </class>
+
+    <adapter
+        provides="zope.app.container.interfaces.INameChooser"
+        for=".resourcecontainer.ResourceContainer"
+        factory=".resconnamechooser.ResConNameChooser"
+        />
+
+   <utility
+        provides="zope.schema.interfaces.IVocabularyFactory"
+        component=".contentnamesvocabulary.ContentNamesVocabulary"
+        name="ContentNames"
+        />
+
+    <include package=".handlers" />
+
+    <include package=".resourceview" />
+
+    <include package=".browser" />
+
+</configure>

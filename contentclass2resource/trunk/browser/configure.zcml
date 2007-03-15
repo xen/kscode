@@ -1,0 +1,90 @@
+<configure
+    xmlns="http://namespaces.zope.org/browser">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Sergey Shilov
+    $Id$ 
+  -->
+
+    <containerViews
+        for="..interfaces.IResourceContainer"
+        add="zope.ManageContent"
+        contents="zope.ManageContent"
+        index="zope.ManageContent"
+    />
+    
+    <addform
+        label="Add resource container"
+        name="add_resource_container.html"
+        schema="..interfaces.IResourceContainer"
+        fields="prefix"
+        content_factory="..resourcecontainer.ResourceContainer"
+        permission="zope.ManageContent"
+        />
+    
+    <addMenuItem
+        class="..resourcecontainer.ResourceContainer"
+        title="Resource container"
+        description="Resource Container"
+        permission="zope.ManageContent"
+        view="add_resource_container.html" 
+        />
+    
+    <editform
+        schema="..interfaces.IResourceContainer"
+        for="..interfaces.IResourceContainer"
+        label="Edit"
+        name="edit.html"
+        fields="prefix"
+        permission="zope.ManageContent"
+        menu="zmi_views" title="Edit" 
+        />
+
+    <page
+        for="..interfaces.IResourceContainer"
+        class=".rescontainerview.RegenerateView"
+        name="regenerate.html"
+        template="regenerate.pt"
+        permission="zope.ManageContent"
+        menu="zmi_views" title="Regenerate" 
+        />
+
+<!-- Resource content -->
+
+    <addform
+        label="Add content resource"
+        name="add_resource.html"
+        schema="..interfaces.IContentClassResourceSchema"
+        fields="name__ call icon"
+        content_factory="..resourcecontent.ResourceContent"
+        permission="zope.ManageContent"
+        set_before_add="name__"
+        />
+    
+    <addMenuItem
+        class="..resourcecontent.ResourceContent"
+        title="Resource content"
+        description="Resource Content"
+        permission="zope.ManageContent"
+        view="add_resource.html" 
+        />
+    
+    <editform
+        schema="..interfaces.IContentClassResourceSchema"
+        for="..interfaces.IContentClassResourceSchema"
+        label="Edit"
+        name="edit.html"
+        fields="call icon"
+        permission="zope.ManageContent"
+        menu="zmi_views" title="Edit" 
+        />
+
+</configure>

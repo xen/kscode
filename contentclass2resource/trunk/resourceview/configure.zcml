@@ -1,0 +1,27 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Sergey Shilov
+    $Id$ 
+  -->
+
+  <view
+    for="*"
+    name="resource"
+    factory=".resourceview.ResourceView"
+    type="zope.publisher.interfaces.http.IHTTPRequest"
+    permission="zope.Public"
+    allowed_interface="..interfaces.IContentClassResource"
+    />
+
+</configure>

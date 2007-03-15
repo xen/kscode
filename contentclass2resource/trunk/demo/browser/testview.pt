@@ -1,0 +1,16 @@
+<html metal:use-macro="views/standard_macros/view">
+<body>
+<div metal:fill-slot="body">
+  <div class="row">
+    <div style="width: 100%; border: 2 solid black">
+      <strong>Test view:</strong>
+    </div>
+    <br/><br/>
+    Class name:
+    <span tal:content="context/@@resource/call">Class name value</span><br/>
+    Class icon:
+    <span tal:content="context/@@resource/icon">Class icon value</span><br/>
+  </div>
+</div>
+</body>
+</html>

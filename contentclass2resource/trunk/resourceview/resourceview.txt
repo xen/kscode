@@ -1,0 +1,35 @@
+Описание resourceview :
+
+  Автор -- Andrey Orlov
+  
+  Версия -- $Id$
+
+  URL -- $URL: https://corp.keysolutions.ru/svn/products/ContentClass2Resource/trunk/contentclass2resource/resourceview/resourceview.txt $
+
+  Аннотация: 
+  
+    Позволяет вызовом специального адаптера @@resource
+    получать ресурсы, ассоциированнные с данным контент
+    классом.
+
+  Идея реализации:
+
+    Пример:
+        https://code.keysolutions.ru/svn/neuralskin/trunk/neuralskin/element/viewnextprev/  
+
+        Алгоритм:
+        
+            1.  По этой ссылке генерится специальный вид
+            
+            2.  Назовем его @@resource
+            
+            3.  Который будет из контекста получать текущий объект
+            
+            4.  Из него - сайт менеджер
+            
+            5.  Из сайт менеджера - список всех зарегистрированных реестров
+            
+            6.  В списке реестров он будет находить страницу ресурсов
+            
+            7.  И все атрибуты этой страницы предоставлять как свои собственнный
+

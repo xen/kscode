@@ -1,0 +1,35 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Sergey Shilov
+    $Id$ 
+  -->
+    <interface
+        interface=".interfaces.IMyContentClass"
+        type="zope.app.content.interfaces.IContentType"
+        />
+      
+    <class class=".mycontentclass.MyContentClass">
+        <factory
+            id="mycontentclass.MyContentClass"
+            description="Test Content" 
+            />
+        <require 
+            permission="zope.ManageContent"
+            set_schema=".interfaces.IMyContentClass"
+            interface=".interfaces.IMyContentClass"
+            />
+    </class> 
+
+    <include package=".browser" />
+
+</configure>

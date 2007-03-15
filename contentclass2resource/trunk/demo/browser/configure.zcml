@@ -1,0 +1,59 @@
+<configure
+    xmlns="http://namespaces.zope.org/browser">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Sergey Shilov
+    $Id$ 
+  -->
+
+    <addform
+        label="Add test content"
+        name="add_test.html"
+        schema="..interfaces.IMyContentClass"
+        content_factory="..mycontentclass.MyContentClass"
+        permission="zope.ManageContent"
+        />
+    
+    <addMenuItem
+        class="..mycontentclass.MyContentClass"
+        title="Test content"
+        description="Test Content"
+        permission="zope.ManageContent"
+        view="add_test.html" 
+        />
+    
+    <editform
+        schema="..interfaces.IMyContentClass"
+        for="..interfaces.IMyContentClass"
+        label="Edit"
+        name="edit.html"
+        permission="zope.ManageContent"
+        menu="zmi_views" title="Edit" 
+        />
+    
+    <form
+        class="..mycontentclass.MyContentClass"
+        name="demo.html"
+        permission="zope.ManageContent"
+        schema="..interfaces.IDemoResource"
+        menu="zmi_views"
+        title="Demo" 
+        />
+    
+    <page
+        for="..interfaces.IMyContentClass"
+        name="testview.html"
+        template="testview.pt"
+        permission="zope.ManageContent"
+        menu="zmi_views" title="View" 
+        />
+
+</configure>

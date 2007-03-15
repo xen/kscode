@@ -1,0 +1,20 @@
+<html metal:use-macro="views/standard_macros/view">
+<body>
+<div metal:fill-slot="body">
+  <div class="row">
+    <div
+        style="font-weight: bold"
+        tal:condition="view/parseRegenerateRequest">
+        All vocabularies regenerated successfully!
+        </div>
+    <form action="@@regenerate.html" method="post">
+    <input
+        type="submit"
+        value="Regenerate vocabularies"
+        name="regenerate"
+        />
+    </form>
+  </div>
+</div>
+</body>
+</html>
