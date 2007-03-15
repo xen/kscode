@@ -1,0 +1,5 @@
+<dtml-comment>
+connection_id : db
+arguments :
+</dtml-comment>                
+DELETE FROM keyindexvalues

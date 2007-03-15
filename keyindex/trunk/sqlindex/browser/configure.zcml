@@ -1,0 +1,56 @@
+<configure
+    xmlns="http://namespaces.zope.org/browser"
+    i18n_domain="keyindex">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Anatoly Bubenkov
+    $Id$
+  -->
+
+    <containerViews
+        for="..interfaces.ISQLIndex"
+        index="zope.ManageContent"
+        contents="zope.ManageContent"
+        add="zope.ManageContent"
+    />
+
+    <addform
+        label="Add SQL Index"
+        name="AddSQLIndex.html"
+        schema="..interfaces.ISQLIndex"
+        content_factory="..sqlindex.SQLIndex"
+        permission="zope.ManageContent"
+        set_before_add="interface"
+        />
+
+    <addMenuItem
+        class="..sqlindex.SQLIndex"
+        title="SQL Index"
+        description="SQL Index"
+        permission="zope.ManageContent"
+        view="AddSQLIndex.html"
+        />
+
+    <editform
+        schema="..interfaces.ISQLIndex"
+        for="..interfaces.ISQLIndex"
+        label="Edit"
+        name="edit.html"
+        permission="zope.ManageContent"
+        />
+
+    <menuItem
+    for="..interfaces.ISQLIndex"
+    menu="zmi_views" title="Edit"
+    action="edit.html"
+    order="100"
+  />
+</configure>

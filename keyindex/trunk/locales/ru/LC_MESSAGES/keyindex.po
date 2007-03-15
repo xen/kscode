@@ -1,0 +1,101 @@
+# translation of keyindex.po to
+##############################################################################
+#
+# Copyright (c) 2003-2004 Zope Corporation and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+# Anatoly Bubenkov <a.bubenkov@keysolutions.ru>, 2007.
+##############################################################################
+msgid ""
+msgstr ""
+"Project-Id-Version: keyindex\n"
+"Generated-By: zope/app/locales/extract.py\n"
+"PO-Revision-Date: 2007-02-06 19:45+0200\n"
+"POT-Creation-Date: Tue Feb  6 18:27:38 2007\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"MIME-Version: 1.0\n"
+"Language-Team:  <ru@li.org>\n"
+"Last-Translator: Anatoly Bubenkov <a.bubenkov@keysolutions.ru>\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: /usr/local/zope-3.3/lib/python/keyindex/browser/configure.zcml:18
+#: /usr/local/zope-3.3/lib/python/keyindex/browser/configure.zcml:18
+msgid "Edit Interface"
+msgstr "Изменить Интерфейс"
+
+#: /usr/local/zope-3.3/lib/python/keyindex/pyluceneindex/browser/configure.zcml:18
+msgid "Add PyLucene Index"
+msgstr "Добавить Индекс PyLucene"
+
+#: /usr/local/zope-3.3/lib/python/keyindex/pyluceneindex/browser/configure.zcml:36
+#: /usr/local/zope-3.3/lib/python/keyindex/pyluceneindex/browser/configure.zcml:36
+#: /usr/local/zope-3.3/lib/python/keyindex/sqlindex/browser/configure.zcml:42
+#: /usr/local/zope-3.3/lib/python/keyindex/sqlindex/browser/configure.zcml:42
+msgid "Edit"
+msgstr "Изменить"
+
+#: /usr/local/zope-3.3/lib/python/keyindex/pyluceneindex/configure.zcml:22
+#: /usr/local/zope-3.3/lib/python/keyindex/pyluceneindex/browser/configure.zcml:28
+#: /usr/local/zope-3.3/lib/python/keyindex/pyluceneindex/browser/configure.zcml:28
+msgid "PyLucene Index"
+msgstr "Индекс PyLucene"
+
+#: /usr/local/zope-3.3/lib/python/keyindex/sqlindex/browser/configure.zcml:25
+msgid "Add SQL Index"
+msgstr "Индекс SQL"
+
+#: /usr/local/zope-3.3/lib/python/keyindex/sqlindex/configure.zcml:22
+#: /usr/local/zope-3.3/lib/python/keyindex/sqlindex/browser/configure.zcml:34
+#: /usr/local/zope-3.3/lib/python/keyindex/sqlindex/browser/configure.zcml:34
+msgid "SQL Index"
+msgstr "Индекс SQL"
+
+#: x/interfaces.py:25
+msgid "On"
+msgstr "Вкл"
+
+#: x/interfaces.py:27
+msgid "Off"
+msgstr "Выкл"
+
+#: x/interfaces.py:36
+msgid "Interface"
+msgstr "Интерфейс"
+
+#: x/interfaces.py:37
+msgid "Objects will be adapted to this interface"
+msgstr "Объекты будут адаптированы к этому интерфейсу"
+
+#: x/interfaces.py:43
+msgid "State"
+msgstr "Состояние"
+
+#: x/interfaces.py:44
+#. Default: ""
+msgid "State of index (${On} or ${Off})"
+msgstr "Состояние индекса (${On} или ${Off})"
+
+#: x/pyluceneindex/interfaces.py:31
+msgid "Server URL"
+msgstr "URL Сервера"
+
+#: x/pyluceneindex/interfaces.py:32
+msgid "XML-RPC server URL"
+msgstr "URL Сервера XML-RPC"
+
+#: x/sqlindex/interfaces.py:30
+msgid "Connection Name"
+msgstr "Имя соединения"
+
+#: x/sqlindex/interfaces.py:31
+msgid "The Connection Name for the connection to be used."
+msgstr "Имя соединения для подключения"
+

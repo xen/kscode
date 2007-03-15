@@ -1,0 +1,9 @@
+Описание keyindexstatesvocabulary :
+
+  Автор -- Anatoly Bubenkov
+  
+  Версия -- $Id$
+
+  Аннотация: 
+  
+    Словарь состояний индекса, заданный в keyindex.interfaces

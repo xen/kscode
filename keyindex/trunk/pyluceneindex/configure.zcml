@@ -1,0 +1,66 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="keyindex">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Anatoly Bubenkov
+    $Id$
+  -->
+
+<interface interface=".interfaces.IPyLuceneIndex"
+      />
+
+  <class class=".pyluceneindex.PyLuceneIndex">
+    <factory
+        id="pyluceneindex.PyLuceneIndex"
+        description="PyLucene Index"
+        />
+
+    <require
+        permission="zope.ManageContent"
+        interface=".interfaces.IPyLuceneIndex"
+        />
+
+    <require
+        permission="zope.ManageContent"
+        interface="zope.index.interfaces.IStatistics"
+        />
+
+     <require
+        permission="zope.ManageContent"
+        interface="zope.index.interfaces.IInjection"
+        />
+
+    <require
+        permission="zope.ManageContent"
+        interface=".interfaces.IPyLuceneIndexContained"
+        />
+
+    <require
+        permission="zope.ManageContent"
+        interface="zope.index.interfaces.IIndexSearch"
+        />
+
+    <require
+        permission="zope.ManageContent"
+        set_schema=".interfaces.IPyLuceneIndex"
+        />
+
+    <require
+        permission="zope.ManageContent"
+        set_schema=".interfaces.IPyLuceneIndexContained"
+        />
+
+  </class>
+
+  <include package=".browser" />
+
+</configure>

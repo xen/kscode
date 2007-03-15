@@ -1,0 +1,16 @@
+Описание ftprepresentation :
+
+  Автор -- Anatoly Bubenkov
+  
+  Версия -- $Id$
+
+  Аннотация: 
+  
+    Продукт ftprepresentation использует продук sqlftprepresentation 
+    для представления SQLIndex как папки ftp, содержащей SQLScript-ы
+
+  Идея реализации:
+
+    Для реализации нам потребуется зарегистрировать адаптер к
+    zope.app.filerepresentation.interfaces.IFileFactory, используя базовый
+      класс sqlftprepresentation.fileresentation.SQLScriptFactory  

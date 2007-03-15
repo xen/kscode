@@ -1,0 +1,189 @@
+$Id$
+
+Установка и настройка плагина keyindex.pyluceneindex:
+
+    Используемое ПО:
+
+        - SWIG 1.3.24;
+
+        - gcc 3.4.6;
+
+        - Twisted 2.2
+
+        - TwistedWeb 0.5
+
+        - ElementTree 1.2.6
+
+        - cElementTree 1.0.5
+
+        - PyLucene 1.9.1;
+
+        - NXLucene 0.11.1.1
+
+        - nuxeo.lucene 0.11.1
+
+    Предварительная подготовка:
+
+        Для успешной установки keyindex.pyluceneindex должны
+        быть предварительно установлены следующие продукты:
+
+        1.  Установите SWIG 1.3.24 по его инструкциям установки
+            http://heanet.dl.sourceforge.net/sourceforge/swig/swig-1.3.24.tar.gz
+
+        2.  Соберите и установите из исходников gcc 3.4.6 по его инструкциям установки
+            http://www.cps-project.org/sections/projects/nxlucene/installation
+            в папку /usr/local/gcc-3.4.6
+
+            ftp://ftp.uvsq.fr/pub/gcc/releases/gcc-3.4.6/gcc-3.4.6.tar.bz2
+
+        3.  Соберите и установите из исходников PyLucene 1.9.1
+
+            - скачайте http://downloads.osafoundation.org/PyLucene/src/PyLucene-src-1.9.1.tar.gz
+
+            - раскройте в локальную папку
+
+            - отредактируйте Makefile (патч невозможен, так как все зависит от
+                путей расположения на конкретной машине)
+
+
+            строки 32-38::
+
+                VERSION=1.9.1
+                LUCENE_SVN_VER=382905
+                LUCENE_SVN=http://svn.apache.org/repos/asf/lucene/java/tags/lucene_1_9_1
+                LUCENE_VER=1.9.1-$(LUCENE_SVN_VER)
+                PYTHON_VER=2.4
+                #DB_VER=4.3.29
+                DB_VER=4.4.20
+
+            строки 90-99::
+                # Linux
+                PREFIX=/usr/local
+                PREFIX_PYTHON=/usr
+                SWIG=$(PREFIX)/bin/swig
+                GCJ_HOME=/usr/local/gcc-3.4.6
+                GCJ_VER=3
+                #DB=$(PYLUCENE)/db-$(DB_VER)
+                #PREFIX_DB=$(PREFIX)/BerkeleyDB.$(DB_LIB_VER)
+                ANT=ant
+                PYTHON=/usr/bin/python
+
+            - соберите::
+
+                $ make
+
+            - установите::
+
+                $ sudo make install
+
+        4.  Установите Twisted 2.2 :
+
+            - скачайте
+              http://tmrc.mit.edu/mirror/twisted/Twisted/2.2/TwistedSumo-2006-02-12.tar.bz2,
+
+            - раскройте в локальную папку,
+
+            - соберите::
+
+                $ python setup.py build
+
+            - установите::
+
+                $ sudo python setup.py install
+
+        6.  Установите ElementTree 1.2.6
+
+            - скачайте http://effbot.org/downloads/elementtree-1.2.6-20050316.tar.gz,
+
+            - раскройте в локальную папку,
+
+            - соберите::
+
+                $ python setup.py build
+
+            - установите::
+
+                $ sudo python setup.py install
+
+
+        7.  Установите cElementTree 1.0.5
+
+            - скачайте http://effbot.org/downloads/cElementTree-1.0.5-20051216.zip,
+
+            - раскройте в локальную папку,
+
+            - соберите::
+
+                $ python setup.py build
+
+            - установите::
+
+                $ sudo python setup.py install
+
+        8.  Установите NXLucene 0.11.1.1
+
+            - ссылка на руководство http://www.cps-project.org/sections/projects/nxlucene/installation,
+
+            - скачать http://www.cps-project.org/sections/projects/nxlucene/downloads/nxlucene-0-11-1-1-tgz,
+
+            - раскройте в /usr/local/NXLucene,
+
+            - соберите::
+
+                $ python setup.py build
+
+            - установите::
+
+                $ sudo python setup.py install
+
+            - создайте символьную ссылку папки::
+
+               /usr/local/NXLucene/src/nxlucene
+
+               в папке ::
+
+               <python path>/site-packages/
+
+            - исправьте в файле /usr/local/NXLucene/bin/nxlucened
+
+               - 1 строку на #!/bin/bash
+
+               - раскомментируйте строку 19
+
+            - запустите сервер::
+
+                $ cd ./bin
+
+                $ ./nxlucened start
+
+        8.  Установите nuxeo.lucene 0.11.1 в <python path>/site-packages/
+
+            - Скачайте в папку продуктов c именем nuxeo::
+
+                svn checkout https://svn.nuxeo.org/pub/Zope3/nuxeo.lucene/tags/0.11.1/src/nuxeo
+
+    Установка:
+
+        1. Cкопируйте нижеуказанный файл в ::
+
+            <Zope Instance Path>/etc/package-includes
+
+            keyindex/pyluceneindex/etc/pyluceneindex-configure.zcml;
+
+        2. Запустите Zope;
+
+        3. Перейдите в Сайт-Менеджер;
+
+        4. Выберите закладку Contents компонента Catalog;
+
+        5.  Добавьте компонент PyLucene Index;
+
+            - интерфейс - sport.searchadapter.interfaces.ISearchable,
+
+            - server url - URL nxlucene - сервера,
+
+            - on - On (включен),
+
+            - имя - PyLuceneIndex.
+
+Конец документа

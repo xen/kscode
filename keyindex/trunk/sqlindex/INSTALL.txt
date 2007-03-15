@@ -1,0 +1,76 @@
+$Id$
+
+
+Установка и настройка продукта keyindex.sqlindex:
+
+    Используемое ПО:
+
+        - postgresql;
+
+        - psycopgda;
+
+        - SQLScriptFTPRepresentation.
+
+    Предварительная подготовка:
+
+        Для успешной установки keyindex.sqlindex должны
+        быть предварительно установлены следующие продукты:
+
+            1. Установите postgresql по его инструкции;
+
+            2. установите psycopgDA по его инструкции;
+
+            3. установите SQLScriptFTPRepresentation по его инструкции;
+
+        До начала инсталляции в PostgreSQL должна быть база sport,
+        должен существовать коннектор к ней с именем psycopgda,
+        зарегистрирванный под именем db.
+
+    Установка:
+
+        1. Cкопируйте нижеуказанный файл в <Zope Instance Path>/etc/package-includes::
+
+            keyindex/pyluceneindex/etc/sqlindex-configure.zcml
+
+        2. Включите ftp-сервер Zope:
+
+            - в файле <Zope Instance Path>/etc/zope.conf
+              раскомментируйте следующие строки::
+
+                  (по умолчанию - строки 51-54)
+                #<server ftp>
+                #  type FTP
+                #  address 8021
+                #</server>
+
+        3. Запустите Zope;
+
+        4. Создайте таблицу в базе данных, выполнив скрипт
+
+            keyindex/sqlindex/sql/base.sql
+
+        5. Перейдите в Сайт-Менеджер
+
+        6. Выберите закладку Contents компонента Catalog
+
+        7. Добавьте компонент SQL Index
+
+            - интерфейс - sport.searchadapter.interfaces.ISearchable
+
+            - connectionName - db
+
+            - on - On (включен)
+
+            - имя - SQLIndex
+
+        8. Подключитесь к Zope ftp-серверу
+            (на локальной машине с установками по умолчанию это ftp://<имя пользователя>@localhost:8021)
+
+            имя пользователя и пароль вводите Ваши
+
+        9. Перейдите в папку ftp://<Zope ftp Server>/<Your Site>/Catalog/SQLIndex
+
+       10. Скопируйте все файлы без расширения из папки keyindex/sqlindex/sql
+               в ftp://<Zope ftp Server>/<Your Site>/Catalog/SQLIndex
+
+Конец документа

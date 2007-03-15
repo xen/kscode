@@ -1,0 +1,23 @@
+<dtml-comment>
+connection_id : db
+arguments : Id searchableText contentType title subject description creators created modified
+</dtml-comment>
+UPDATE keyindexvalues
+SET searchabletext =
+        <dtml-sqlvar "searchableText.encode('UTF-8')" type="string">,
+    contenttype =
+         <dtml-sqlvar "contentType.encode('UTF-8')" type="string">,
+    title =
+         <dtml-sqlvar "title.encode('UTF-8')" type="string">,
+    subject =
+         <dtml-sqlvar "subject.encode('UTF-8')" type="string">,
+    description =
+         <dtml-sqlvar "description.encode('UTF-8')" type="string">,
+    creators =
+         <dtml-sqlvar "creators.encode('UTF-8')" type="string">,
+    created =
+         <dtml-sqlvar created type="string">,
+    modified =
+         <dtml-sqlvar modified type="string">
+
+WHERE id = <dtml-sqlvar Id type="int">

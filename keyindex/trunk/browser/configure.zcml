@@ -1,0 +1,33 @@
+<configure
+    xmlns="http://namespaces.zope.org/browser"
+    i18n_domain="keyindex">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Anatoly Bubenkov
+    $Id$
+  -->
+
+  <editform
+        schema="..interfaces.IKeyIndex"
+        for="..interfaces.IKeyIndex"
+        label="Edit Interface"
+        name="editInterface.html"
+        permission="zope.ManageContent"
+        />
+
+   <menuItem
+    for="..interfaces.IKeyIndex"
+    menu="zmi_views" title="Edit Interface"
+    action="editInterface.html"
+    order="100"
+  />
+
+</configure>

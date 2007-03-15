@@ -1,0 +1,53 @@
+<configure
+    xmlns="http://namespaces.zope.org/browser"
+    i18n_domain="keyindex">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Anatoly Bubenkov
+    $Id$
+  -->
+
+  <addform
+        label="Add PyLucene Index"
+        name="AddPyLuceneIndex.html"
+        schema="..interfaces.IPyLuceneIndex"
+        content_factory="..pyluceneindex.PyLuceneIndex"
+        permission="zope.ManageContent"
+        fields="interface server_url state"
+        set_before_add="interface server_url"
+        />
+
+  <addMenuItem
+      class="..pyluceneindex.PyLuceneIndex"
+      title="PyLucene Index"
+      description="PyLucene Index"
+      permission="zope.ManageContent"
+      view="AddPyLuceneIndex.html"
+      />
+
+  <editform
+      schema="..interfaces.IPyLuceneIndex"
+      for="..interfaces.IPyLuceneIndex"
+      label="Edit"
+      name="edit.html"
+      permission="zope.ManageContent"
+      fields="interface server_url state"
+      />
+
+  <menuItem
+    for="..interfaces.IPyLuceneIndex"
+    menu="zmi_views" title="Edit"
+    action="edit.html"
+    order="100"
+  />
+
+
+</configure>

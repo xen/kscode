@@ -1,0 +1,6 @@
+<dtml-comment>
+connection_id : db
+arguments : Id
+</dtml-comment>                
+DELETE FROM keyindexvalues
+WHERE id = <dtml-sqlvar Id type="int">

@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="keyindex">
+
+  <!--
+    Разработано компанией Ключевые Решения (http://keysolutions.ru/)
+    Все права защищены, 2006-2007
+
+    Developed by Key Solutions (http://keysolutions.ru/)
+    All right reserved, 2006-2007
+  -->
+
+  <!--
+    Author: Anatoly Bubenkov
+    $Id$
+  -->
+   <adapter
+             for="keyindex.sqlindex.interfaces.ISQLIndex"
+            provides="zope.app.filerepresentation.interfaces.IFileFactory"
+             factory="sqlscriptftprepresentation.filerepresentation.SQLScriptFactory"
+            permission="zope.ManageContent" />
+
+</configure>

@@ -1,0 +1,62 @@
+$Id$
+
+Установка и настройка продукта keyindex:
+
+     Используемое ПО:
+
+        - requestadapters;
+
+        - searchadapter;
+
+    Список плагинов:
+
+        -- keyindex/sqlindex
+
+        -- keyindex/pyluceneindex
+
+
+    Предварительная подготовка:
+
+        Для успешной установки keyindex должны
+        быть предварительно установлены следующие продукты:
+
+        - psycopgda;
+
+        1. searchadapter по его инструкции
+
+        5. requestadapter по его инструкции
+
+        До начала инсталляции, должен существовать экезмпляр продукта uniqueid,
+        зарегистрированный под пустым ("") именем.
+
+    Установка:
+
+        1. Скопируйте каталог keyindex в <Zope Instance Path>/lib/python
+
+        2. Cкопируйте нижеуказанный файл в <Zope Instance Path>/etc/package-includes:
+            keyindex/etc/keyindex-configure.zcml
+
+        3. Запустите Zope
+
+        4. Перейдите в Сайт-Менеджер
+
+        5. Добавьте Каталог
+            параметры:
+
+                имя -- Catalog
+
+
+        6. Выберите компонент Catalog и зарегистрируйте
+            параметры:
+
+                имя -- нет имени
+
+                интерфейс -- zope.app.catalog.interfaces.ICatalog
+
+        7. Перейдите на закладку Contents компонента Catalog
+
+        8. Остановите Zope
+
+        9. Установите плагин keyindex/sqlindex по его инструкции
+
+ Конец документа
